@@ -42,4 +42,5 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           cd /home/${{ secrets.EC2_USER }}/app
-          node server.js
+          npm install
+          pm2 start server.js --name express-server || pm2 restart express-server
